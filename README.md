@@ -2,6 +2,19 @@
 
 A [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server that provides SSH session management tools for AI assistants.
 
+## Purpose
+
+This MCP server was built with a specific goal: **persistent SSH sessions with working sudo caching and X11 askpass forwarding**. 
+
+Why does this matter? Most existing solutions create new SSH connections for every command, which means:
+- You have to enter your sudo password over and over again every few seconds
+- Sudo's credential caching becomes useless since each command runs in a fresh session
+- Complex workflows involving multiple sudo operations become painfully repetitive
+
+By maintaining persistent SSH sessions, this server lets sudo caching work as intended - enter your password once, and subsequent sudo commands in the same session just work without re-authentication (within sudo's timeout window).
+
+**Important:** If your server can't have `ssh-askpass` installed or you can't forward X11, use another MCP server instead.
+
 ## What it does
 
 - **Connect to SSH hosts** and maintain persistent sessions
