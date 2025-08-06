@@ -46,6 +46,12 @@ The server uploads a bash relay script to remote hosts, then communicates throug
 ## Installation
 
 ```bash
+cargo install --git https://github.com/ChristophRauch/mcp-ssh-connections
+```
+
+or, when you checked out the source locally
+
+```bash
 cargo install --path .
 ```
 
